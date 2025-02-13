@@ -1,12 +1,14 @@
 
 import { useNavigate } from 'react-router-dom'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/ui/NavBar'
 
+import { Breadcrumb, Layout, Menu, theme } from 'antd';
+const { Header, Content, Footer, Sider } = Layout;
 const Home = () => {
     const navigate = useNavigate()
     return (
-        <div>
-            <div className="bg-white  overflow-y-clip">
+        <div className='bg bg-red-200'>
+            <div className="bg-white overflow-y-clip">
             <Navbar />
 
             <div className="relative isolate px-6 pt-6 lg:px-8">
@@ -124,6 +126,13 @@ const Home = () => {
         </div>
       </div>
     </div>
+    <Footer
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          FirstYear.ai ©{new Date().getFullYear()} Created by Ayomide Hakeem
+        </Footer>
         </div>
     )
 }

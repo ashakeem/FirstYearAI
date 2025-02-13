@@ -4,8 +4,15 @@ from rest_framework import serializers
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'password']
-        extra_kwargs = {"password":{"write_only":True}}
+        fields = ['id', 'username', 'email', 'password']
+        extra_kwargs = {
+            "password": {"write_only": True},
+            "email": {
+                "required": False,     # Not strictly required
+                "allow_blank": True,   # Allows the field to be an empty string
+                "allow_null": True     # Allows the field to be null
+            },
+        }
         
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
