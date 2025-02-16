@@ -2,8 +2,6 @@
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/ui/NavBar'
 
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-const { Header, Content, Footer, Sider } = Layout;
 const Home = () => {
     const navigate = useNavigate()
     return (
@@ -126,13 +124,9 @@ const Home = () => {
         </div>
       </div>
     </div>
-    <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
+    <footer className="bg-white p-4 text-center border-t border-gray-100 shadow">
           FirstYear.ai ©{new Date().getFullYear()} Created by Ayomide Hakeem
-        </Footer>
+        </footer>
         </div>
     )
 }

@@ -25,7 +25,7 @@ const Form = ({ route, method }) => {
                 localStorage.setItem(REFRESH_TOKEN, res.data.refresh)
 
                 // navigate to dashboard
-                navigate('/dashboard')
+                navigate('/roadmaps')
 
             } else {
                 // // Call signup API endpoint
