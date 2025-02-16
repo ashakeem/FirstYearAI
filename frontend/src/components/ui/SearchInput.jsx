@@ -10,14 +10,16 @@ const SearchInput = () => {
     - @tailwindcss/forms
 */}
 
-<div className=" relative">
+<div className=" relative w-full border border-gray-300 rounded-md shadow-xs">
   <label htmlFor="Search" className="sr-only"> Search </label>
 
   <input
     type="text"
     id="Search"
     placeholder="Search for..."
-    className="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-xs sm:text-sm"
+    className="w-full rounded-md border-gray-200 py-2.5 ml-1 pe-10 shadow-xs sm:text-sm focus-visible:none"
+
+    
   />
 
   <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">

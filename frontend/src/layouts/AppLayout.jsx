@@ -13,7 +13,7 @@ import {
   FiLogOut,
 } from "react-icons/fi";
 
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SearchInput from "../components/ui/SearchInput";
 
 const menuItems = [
@@ -24,9 +24,10 @@ const menuItems = [
 ];
 
 const AppLayout = ({ children }) => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleMobileSidebarToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -34,7 +35,7 @@ const AppLayout = ({ children }) => {
 
   const handleLogout = () => {
     localStorage.clear();
-    return <Navigate to="/login" />;
+    navigate("/login");
   };
 
   return (
@@ -131,7 +132,7 @@ const AppLayout = ({ children }) => {
           }`}
       >
         {/* Header */}
-        <header className="bg-white p-4 shadow flex items-center">
+        <header className="bg-white p-4 shadow flex justify-center items-center">
           {/* Hamburger icon for mobile */}
           <button
             onClick={handleMobileSidebarToggle}
@@ -139,7 +140,7 @@ const AppLayout = ({ children }) => {
           >
             <FiMenu size={24} />
           </button>
-        {/* <div className=" flex bg-red-50 align-middle"><SearchInput/></div> */}
+        <div className=" flex w-[40%] justify-center items-center"><SearchInput/></div>
         </header>
 
         {/* Content */}

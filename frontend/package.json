@@ -13,12 +13,12 @@
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@material-tailwind/react": "^2.1.10",
+    "@radix-ui/react-dialog": "^1.1.6",
     "@shadcn/ui": "^0.0.4",
     "@tabler/icons-react": "^3.30.0",
-    "@tailwindcss/vite": "^4.0.6",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.13.1",
     "axios": "^1.7.9",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.475.0",
@@ -28,10 +28,12 @@
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.5",
     "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.7.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@types/node": "^22.13.4",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
@@ -42,7 +44,7 @@
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
     "postcss": "^8.5.2",
-    "tailwindcss": "^4.0.6",
+    "tailwindcss": "^3.4.17",
     "vite": "^6.1.0"
   }
 }

@@ -5,12 +5,12 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import NoMatch from './pages/NoMatch';
 
-import Resources from './pages/Resources.jsx';
+import Resources from './pages/Resources';
 import Resume from './pages/Resume';
 import Profile from './pages/Profile';
 
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import AppLayout from './layouts/AppLayout.jsx';
+import AppLayout from './layouts/AppLayout';
 import { UserProvider } from './contexts/UserContext';
 import Roadmaps from './pages/Roadmaps.jsx';
 
