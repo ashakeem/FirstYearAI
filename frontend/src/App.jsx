@@ -1,18 +1,17 @@
-
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import NoMatch from './pages/NoMatch';
-
+import Dashboard from './pages/Dashboard';
 import Resources from './pages/Resources';
 import Resume from './pages/Resume';
 import Profile from './pages/Profile';
+import RoadmapView from './pages/RoadmapView';
 
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import AppLayout from './layouts/AppLayout';
-import { UserProvider } from './contexts/UserContext';
-import Roadmaps from './pages/Roadmaps.jsx';
+
 
 function Logout() {
   localStorage.clear();
@@ -26,7 +25,6 @@ function SignupAndLogout() {
 
 function App() {
   return (
-    <UserProvider>
       <Router>
         <Routes>
           {/* Public Routes */}
@@ -37,11 +35,21 @@ function App() {
 
           {/* Protected Routes wrapped with AppLayout */}
           <Route
-            path="/roadmaps"
+            path="/dashboard"
             element={
               <ProtectedRoute>
                 <AppLayout>
-                 <Roadmaps />
+                  <Dashboard />
+                </AppLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/roadmap/:id"
+            element={
+              <ProtectedRoute>
+                <AppLayout>
+                  <RoadmapView />
                 </AppLayout>
               </ProtectedRoute>
             }
@@ -75,14 +83,11 @@ function App() {
                 </AppLayout>
               </ProtectedRoute>
             }
-          />  
-         
-          
+          />
 
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Router>
-    </UserProvider>
   );
 }
 
