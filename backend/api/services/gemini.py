@@ -2,6 +2,7 @@ import google.generativeai as genai
 from django.conf import settings
 import json
 import re
+import ast
 
 # Create the model
 generation_config = {
@@ -24,15 +25,18 @@ class RoadmapGenerator:
             # 1. Generate content
             prompt = self._create_prompt(user_data)
             response = self.model.generate_content(prompt)
-            print("Raw response:", response.text)  # Debug log
+            # print("Raw response:", response.text)  # Debug log
             
             # 2. Clean the response
             cleaned_text = self._clean_response(response.text)
-            print("Cleaned response:", cleaned_text)  # Debug log
+            # print("Cleaned response:", cleaned_text)  # Debug log
+            
+            parsed_content = json.loads(cleaned_text)
+            # print("parsed_content",parsed_content)
             
             # 3. Parse JSON
-            roadmap_content = json.loads(cleaned_text)
-            print("Parsed JSON:", roadmap_content)  # Debug log
+            roadmap_content = parsed_content
+          
             
             return roadmap_content
             
@@ -44,7 +48,16 @@ class RoadmapGenerator:
         # Remove markdown code blocks
         text = re.sub(r'```json\s*', '', text)
         text = re.sub(r'```\s*', '', text)
-        return text.strip()
+        
+        # Convert Python string literal to proper JSON
+        try:
+            # First evaluate as Python literal
+            python_dict = ast.literal_eval(text.strip())
+            # Then convert to proper JSON
+            return json.dumps(python_dict)
+        except Exception as e:
+            print(f"Error cleaning response: {str(e)}")
+            return "{}"
 
     def _get_fallback_roadmap(self):
         return {

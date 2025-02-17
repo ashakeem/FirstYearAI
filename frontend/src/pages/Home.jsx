@@ -5,17 +5,20 @@ import Features from '../components/home/Features'
 import Testimonials from '../components/home/Testimonials'
 import CallToAction from '../components/home/CallToAction'
 import Footer from '../components/home/Footer'
+import { useContext } from 'react'
+import UserContext from '../contexts/userContext'
 
 const Home = () => {
   const navigate = useNavigate()
+  const { user } = useContext(UserContext)
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
-      <Hero navigate={navigate} />
+      <Navbar user={user} />
+      <Hero navigate={navigate} user={user} />
       <Features />
       <Testimonials />
-      <CallToAction navigate={navigate} />
+      <CallToAction navigate={navigate} user={user} />
       <Footer />
     </div>
   )

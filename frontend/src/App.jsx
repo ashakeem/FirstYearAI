@@ -11,7 +11,7 @@ import RoadmapView from './pages/RoadmapView';
 
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import AppLayout from './layouts/AppLayout';
-
+import { UserProvider } from './contexts/userContext';
 
 function Logout() {
   localStorage.clear();
@@ -25,6 +25,7 @@ function SignupAndLogout() {
 
 function App() {
   return (
+    <UserProvider>
       <Router>
         <Routes>
           {/* Public Routes */}
@@ -48,9 +49,7 @@ function App() {
             path="/roadmap/:id"
             element={
               <ProtectedRoute>
-                <AppLayout>
-                  <RoadmapView />
-                </AppLayout>
+                <RoadmapView />
               </ProtectedRoute>
             }
           />
@@ -88,6 +87,7 @@ function App() {
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Router>
+    </UserProvider>
   );
 }
 

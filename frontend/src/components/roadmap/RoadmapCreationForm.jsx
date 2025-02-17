@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { Label } from "../ui/Label";
+import { Loader2 } from "lucide-react"
+
 
 const steps = [
   {
@@ -23,6 +25,7 @@ const steps = [
 
 const RoadmapCreationForm = ({ onClose, onCreate }) => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -63,11 +66,15 @@ const RoadmapCreationForm = ({ onClose, onCreate }) => {
         timeCommitment: parseInt(formData.timeCommitment, 10),
         primaryInterests: formData.primaryInterests.length > 0 ? formData.primaryInterests : []
       };
-
+      setIsLoading(true);
+      console.log('Starting roadmap creation...');
       await onCreate(formDataToSubmit);
-      onClose();
+      console.log('Roadmap created successfully');
+     
     } catch (error) {
       console.error('Error creating roadmap:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -194,61 +201,72 @@ const RoadmapCreationForm = ({ onClose, onCreate }) => {
   };
 
   return (
-    <form className="space-y-4">
-      {/* Progress Indicator */}
-      <div className="border-b border-gray-200">
-        <nav className="flex justify-center -mb-px space-x-8">
-          {steps.map((step, index) => (
-            <button
-              key={step.id}
-              type="button"
-              className={`pb-4 px-1 border-b-2 font-medium text-sm ${
-                index === currentStep
-                  ? 'border-indigo-500 text-indigo-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700'
-              }`}
-              onClick={() => setCurrentStep(index)}
-              disabled={index > currentStep}
-            >
-              {step.name}
-            </button>
-          ))}
-        </nav>
-      </div>
+    <>
+     
+      <form className="space-y-4">
+        {/* Progress Indicator */}
+        <div className="border-b border-gray-200">
+          <nav className="flex justify-center -mb-px space-x-8">
+            {steps.map((step, index) => (
+              <button
+                key={step.id}
+                type="button"
+                className={`pb-4 px-1 border-b-2 font-medium text-sm ${
+                  index === currentStep
+                    ? 'border-indigo-500 text-indigo-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700'
+                }`}
+                onClick={() => setCurrentStep(index)}
+                disabled={index > currentStep}
+              >
+                {step.name}
+              </button>
+            ))}
+          </nav>
+        </div>
 
-      {/* Step Content */}
-      <div className="mt-6">
-        {renderStepContent()}
-      </div>
+        {/* Step Content */}
+        <div className="mt-6">
+          {renderStepContent()}
+        </div>
 
-      {/* Navigation Buttons */}
-      <div className="flex justify-between mt-8">
-        <Button 
-          type="button"
-          variant="outline" 
-          onClick={handleBack}
-          disabled={currentStep === 0}
-        >
-          Back
-        </Button>
-        <div className="flex gap-2">
+        {/* Navigation Buttons */}
+        <div className="flex justify-between mt-8">
           <Button 
             type="button"
             variant="outline" 
-            onClick={onClose}
+            onClick={handleBack}
+            disabled={currentStep === 0}
           >
-            Cancel
+            Back
           </Button>
-          <Button
-            type="submit"
-            onClick={handleNext}
-            disabled={!isStepValid()}
-          >
-            {currentStep === steps.length - 1 ? 'Create Roadmap' : 'Next'}
-          </Button>
+          <div className="flex gap-2">
+            <Button 
+              type="button"
+              variant="outline" 
+              onClick={onClose}
+            >
+              Cancel
+            </Button>
+            <Button
+              type="submit"
+              onClick={handleNext}
+              disabled={!isStepValid() || isLoading}
+              className="bg-indigo-600 text-white hover:bg-blue-600"
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Creating...
+                </>
+              ) : (
+                currentStep === steps.length - 1 ? 'Create Roadmap' : 'Next'
+              )}
+            </Button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </>
   );
 };
 

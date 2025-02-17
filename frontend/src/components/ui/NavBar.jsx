@@ -1,5 +1,4 @@
-
-import { useState } from 'react'
+import { useState} from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useNavigate } from 'react-router-dom'
@@ -11,9 +10,10 @@ const navigation = [
     { name: 'Contact', href: '#' },
 ]
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const navigate = useNavigate()
+
     return (
         <div>
             <header className="inset-x-0 top-0 z-50 fixed shadow-sm bg-opacity-90 bg-white backdrop-blur-lg">
@@ -42,13 +42,21 @@ const Navbar = () => {
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end ">
-                <button
-                                onClick={() => navigate('login')}
-                                className="rounded-lg bg-indigo-600 px-4 py-1.5 text-md font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            >
-                                Login
-                            </button>
-                           
+                    {user ? (
+                        <button
+                            onClick={() => navigate('dashboard')}
+                            className="rounded-lg bg-indigo-600 px-4 py-1.5 text-md font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                            Dashboard
+                        </button>
+                    ) : (
+                        <button
+                            onClick={() => navigate('login')}
+                            className="rounded-lg bg-indigo-600 px-4 py-1.5 text-md font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                            Login
+                        </button>
+                    )}
                 </div>
             </nav>
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -82,14 +90,21 @@ const Navbar = () => {
                                 ))}
                             </div>
                             <div className="py-6">
-                                
-                            <button
-                                onClick={() => navigate('login')}
-                                className="rounded-md bg-indigo-600 px-5 py-3.5 text-md font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            >
-                                Login
-                            </button>
-                            
+                                {user ? (
+                                    <button
+                                        onClick={() => navigate('dashboard')}
+                                        className="rounded-md bg-indigo-600 px-5 py-3.5 text-md font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    >
+                                        Dashboard
+                                    </button>
+                                ) : (
+                                    <button
+                                        onClick={() => navigate('login')}
+                                        className="rounded-md bg-indigo-600 px-5 py-3.5 text-md font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    >
+                                        Login
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>

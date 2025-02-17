@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { FiChevronLeft, FiChevronRight, FiX, FiLogOut, FiHome, FiBook, FiFileText, FiUser } from 'react-icons/fi';
 import Header from '../components/layout/Header';
+import UserContext from '../contexts/userContext';
+import { useContext } from 'react';
 
 // Define menu items
 const menuItems = [
@@ -29,7 +31,7 @@ const menuItems = [
 ];
 
 const AppLayout = ({ children }) => {
-  const user = null;
+  const { user } = useContext(UserContext);
   const [collapsed, setCollapsed] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();

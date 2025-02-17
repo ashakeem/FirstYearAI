@@ -1,4 +1,4 @@
-const CallToAction = ({ navigate }) => {
+const CallToAction = ({ navigate, user }) => {
   return (
     <section className="relative isolate">
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
@@ -12,16 +12,16 @@ const CallToAction = ({ navigate }) => {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 lg:justify-start">
               <button
-                onClick={() => navigate('signup')}
+                onClick={() => navigate(user ? 'dashboard' : 'signup')}
                 className="rounded-lg bg-white px-6 py-3 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
               >
-                Get started for free
+                {user ? 'Dashboard' : 'Get started for free'}
               </button>
               <button
                 onClick={() => navigate('login')}
-                className="text-base font-semibold leading-7 text-white"
+                className={`text-base font-semibold leading-7 text-white ${user ? 'hidden' : ''}`}
               >
-                Learn more <span aria-hidden="true">→</span>
+                learn more <span aria-hidden="true">→</span>
               </button>
             </div>
           </div>

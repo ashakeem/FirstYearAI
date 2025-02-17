@@ -1,4 +1,4 @@
-const Hero = ({ navigate }) => {
+const Hero = ({ navigate, user }) => {
   return (
     <section className="relative isolate px-4 sm:px-6 lg:px-8 pt-14 sm:pt-32">
       <div className="mx-auto max-w-7xl">
@@ -12,16 +12,17 @@ const Hero = ({ navigate }) => {
           </p>
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={() => navigate('signup')}
+              onClick={() => navigate(user ? 'dashboard' : 'signup')}
               className="w-full sm:w-auto rounded-md bg-indigo-600 px-4 sm:px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
             >
-              Get started
+              {user ? 'Dashboard' : 'Get started'}
+             
             </button>
             <button
               onClick={() => navigate('login')}
-              className="w-full sm:w-auto text-sm font-semibold leading-6 text-gray-900"
+              className={`w-full sm:w-auto text-sm font-semibold leading-6 text-gray-900 ${user ? 'hidden' : ''}`}
             >
-              Sign in <span aria-hidden="true">→</span>
+              Log in <span aria-hidden="true">→</span>
             </button>
           </div>
         </div>

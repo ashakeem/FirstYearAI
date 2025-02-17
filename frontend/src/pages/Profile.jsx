@@ -5,7 +5,7 @@ import { Label } from "../components/ui/Label";
 import { Button } from "../components/ui/Button";
 import api from '../api';
 
-const Profile = () => {
+const Profile = (user) => {
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
   const [avatar, setAvatar] = useState(null);
