@@ -10,7 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../components/ui/Dialog";
-import { Button } from "../components/ui/Button";
+import Button from "@/components/ui/Button";
 import { RoadmapSkeleton } from "../components/ui/Loading";
 import RoadmapCreationForm from "../components/roadmap/RoadmapCreationForm";
 import { Alert, AlertDescription, AlertTitle } from "../components/ui/alert";
