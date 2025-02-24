@@ -8,6 +8,8 @@ import Resources from './pages/Resources';
 import Resume from './pages/Resume';
 import Profile from './pages/Profile';
 import RoadmapView from './pages/RoadmapView';
+import Waitlist from './pages/Waitlist';
+import WaitlistSuccess from './pages/WaitlistSuccess';
 
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import AppLayout from './layouts/AppLayout';
@@ -83,6 +85,8 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/waitlist" element={<Waitlist />} />
+          <Route path="/waitlist-success" element={<WaitlistSuccess />} />
 
           <Route path="*" element={<NoMatch />} />
         </Routes>

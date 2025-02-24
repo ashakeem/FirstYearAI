@@ -12,18 +12,23 @@ const Hero = ({ navigate, user }) => {
           </p>
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <button
+              onClick={() => navigate('waitlist')}
+              className="w-full sm:w-auto rounded-md bg-indigo-600 px-4 sm:px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
+            >
+              Join Waitlist
+            </button>
+            {/* <button
               onClick={() => navigate(user ? 'dashboard' : 'signup')}
               className="w-full sm:w-auto rounded-md bg-indigo-600 px-4 sm:px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
             >
               {user ? 'Dashboard' : 'Get started'}
-             
             </button>
             <button
               onClick={() => navigate('login')}
               className={`w-full sm:w-auto text-sm font-semibold leading-6 text-gray-900 ${user ? 'hidden' : ''}`}
             >
               Log in <span aria-hidden="true">→</span>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

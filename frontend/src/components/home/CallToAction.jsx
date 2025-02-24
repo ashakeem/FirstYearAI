@@ -12,6 +12,12 @@ const CallToAction = ({ navigate, user }) => {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 lg:justify-start">
               <button
+                onClick={() => navigate('waitlist')}
+                className="rounded-lg bg-white px-6 py-3 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
+              >
+                Join Waitlist
+              </button>
+              {/* <button
                 onClick={() => navigate(user ? 'dashboard' : 'signup')}
                 className="rounded-lg bg-white px-6 py-3 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
               >
@@ -22,7 +28,7 @@ const CallToAction = ({ navigate, user }) => {
                 className={`text-base font-semibold leading-7 text-white ${user ? 'hidden' : ''}`}
               >
                 learn more <span aria-hidden="true">→</span>
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="relative mt-16 h-80 lg:mt-8">
