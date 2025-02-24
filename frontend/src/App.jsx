@@ -14,6 +14,7 @@ import WaitlistSuccess from './pages/WaitlistSuccess';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import AppLayout from './layouts/AppLayout';
 import { UserProvider } from './contexts/userContext';
+import ProtectedWaitlistRoute from './components/auth/ProtectedWaitlistRoute';
 
 function Logout() {
   localStorage.clear();
@@ -86,7 +87,14 @@ function App() {
             }
           />
           <Route path="/waitlist" element={<Waitlist />} />
-          <Route path="/waitlist-success" element={<WaitlistSuccess />} />
+          <Route 
+            path="/waitlist-success" 
+            element={
+              <ProtectedWaitlistRoute>
+                <WaitlistSuccess />
+              </ProtectedWaitlistRoute>
+            } 
+          />
 
           <Route path="*" element={<NoMatch />} />
         </Routes>

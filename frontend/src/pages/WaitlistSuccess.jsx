@@ -1,9 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from 'lucide-react';
+import { useEffect } from 'react';
 
 const WaitlistSuccess = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Cleanup function to remove the flag when component unmounts
+    return () => {
+      sessionStorage.removeItem('waitlistCompleted');
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center justify-center">
