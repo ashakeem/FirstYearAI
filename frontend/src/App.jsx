@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-// import Home from './pages/Home';
+import Home from './pages/Home';
 // import Signup from './pages/Signup';
 // import Login from './pages/Login';
 import NoMatch from './pages/NoMatch';
@@ -31,11 +31,11 @@ function App() {
     <UserProvider>
       <Router>
         <Routes>
-          {/* Public Routes
+          {/* Public Routes */}
           <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignupAndLogout />} />
+          {/* <Route path="/signup" element={<SignupAndLogout />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route path="/logout" element={<Logout />} /> */}
 
           {/* Protected Routes wrapped with AppLayout */}
           {/* <Route
