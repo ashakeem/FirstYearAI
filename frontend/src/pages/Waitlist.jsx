@@ -6,12 +6,6 @@ import { useNavigate } from 'react-router-dom';
 const Waitlist = () => {
   const navigate = useNavigate();
 
-  const handleSignUpComplete = () => {
-    // Set the waitlist completion flag
-    sessionStorage.setItem('waitlistCompleted', 'true');
-    navigate('/waitlist-success');
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,8 +41,7 @@ const Waitlist = () => {
                   footerAction: "hidden"
                 }
               }}
-              afterSignUpUrl={false}
-              onComplete={handleSignUpComplete}
+              redirectUrl="/waitlist-success"
             />
           </div>
         </div>
