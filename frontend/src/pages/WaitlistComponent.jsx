@@ -1,9 +1,9 @@
-import { SignUp } from "@clerk/clerk-react";
+import { Waitlist  } from "@clerk/clerk-react";
 import { ArrowLeft } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useNavigate } from 'react-router-dom';
 
-const Waitlist = () => {
+const WaitlistComponent = () => {
   const navigate = useNavigate();
 
   return (
@@ -29,7 +29,7 @@ const Waitlist = () => {
           </div>
 
           <div className="mt-8">
-            <SignUp 
+            <Waitlist
               appearance={{
                 elements: {
                   rootBox: "mx-auto",
@@ -41,7 +41,7 @@ const Waitlist = () => {
                   footerAction: "hidden"
                 }
               }}
-              redirectUrl="/waitlist-success"
+              afterJoinWaitlistUrl={window.location.origin + '/waitlist-success'}
             />
           </div>
         </div>
@@ -50,4 +50,4 @@ const Waitlist = () => {
   );
 };
 
-export default Waitlist; 
+export default WaitlistComponent;  
